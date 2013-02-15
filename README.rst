@@ -16,10 +16,18 @@ Plan
 Steps Taken So Far
 ====================
 
-::
+Initial Creation::
 
     $ django-admin.py startproject --template=https://github.com/twoscoops/django-twoscoops-project/zipball/master --extension=py,rst,html shortener
     $ mv shortener shortener_project
+    $ cd shortener_project
+
+Command-Line Git work::
+
+    $ git init
+    $ git add .
+    $ git commit -m "initial commit"
+    $ git remote add origin git@github.com:pydanny/shortener_project.git
 
 
 Installation of Dependencies
