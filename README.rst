@@ -13,8 +13,10 @@ Plan
 4. Turn into a tutorial.
 
 
-Steps Taken So Far
+Steps Taken Thus Far
 ====================
+
+.. note:: This will get moved into the docs folder.
 
 Initial Creation::
 
@@ -28,6 +30,16 @@ Command-Line Git work::
     $ git add .
     $ git commit -m "initial commit"
     $ git remote add origin git@github.com:pydanny/shortener_project.git
+
+Added to Read the Docs:
+
+    1. Logged in
+    2. Created shortener_project
+
+Created links app::
+
+    $ cd shortener
+    $ django-admin.py startapp links
 
 
 Installation of Dependencies
