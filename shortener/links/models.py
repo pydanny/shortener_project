@@ -3,12 +3,17 @@ from django.utils.translation import ugettext_lazy as _
 
 from model_utils.models import TimeStampedModel
 
+from .validators import validate_five_characters
+
 
 class Link(TimeStampedModel):
 
     original_url = models.CharField(_("URL to be shortened"), max_length=255)
-    identifier = models.CharField(_("Identifier"), max_length=100, db_index=True)
-    count = models.IntegerField(_("count"), null=True, blank=True, default=0)
+    identifier = models.CharField(_("Identifier"),
+                                    max_length=100,
+                                    blank=True,
+                                    validators=[validate_five_characters, ],
+                                    db_index=True)
 
     def __unicode__(self):
         return self.original_url

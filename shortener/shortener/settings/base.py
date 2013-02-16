@@ -1,6 +1,6 @@
 """Common settings and globals."""
 
-
+from os import environ
 from os.path import abspath, basename, dirname, join, normpath
 from sys import path
 
@@ -191,6 +191,8 @@ THIRD_PARTY_APPS = (
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
+    'links',
+    'linkmetrics'
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -207,24 +209,40 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # more details on how to customize your logging configuration.
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': False,
-    'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse'
-        }
+    'disable_existing_loggers': True,
+    'formatters': {
+        'standard': {
+            'format': "[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s",
+            'datefmt': "%d/%b/%Y %H:%M:%S"
+        },
     },
     'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logutils.colorize.ColorizingStreamHandler',
+            'formatter': 'standard'
+        },
         'mail_admins': {
             'level': 'ERROR',
-            'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
-        }
+            'class': 'django.utils.log.AdminEmailHandler',
+            'include_html': True,
+        },
     },
     'loggers': {
+        'django': {
+            'handlers': ['console', ],
+            'propagate': True,
+            'level': 'ERROR',
+        },
         'django.request': {
+
             'handlers': ['mail_admins'],
             'level': 'ERROR',
-            'propagate': True,
+            'propagate': False,
+        },
+        '': {
+            'handlers': ['console', ],
+            'level': environ.get('DEBUG_LEVEL', 'ERROR'),
         },
     }
 }
