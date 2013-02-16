@@ -12,7 +12,7 @@ class Link(TimeStampedModel):
     identifier = models.CharField(_("Identifier"),
                                     max_length=100,
                                     blank=True,
-                                    validators=[validate_five_characters, ],
+                                    validators=[validate_five_characters],
                                     db_index=True)
 
     def __unicode__(self):
