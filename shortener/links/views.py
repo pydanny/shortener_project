@@ -19,7 +19,7 @@ class LinkRedirectView(RedirectView):
         # decode. Just a fetch based on the identifier
         if '-' in identifier or '_' in identifier:
             link = get_object_or_404(Link, identifier=identifier)
-            # TODO - add linklog here
+            link.log(self.request)
             return link.original_url
 
         # decode based on the identifier
@@ -29,5 +29,5 @@ class LinkRedirectView(RedirectView):
         except Link.DoesNotExist:
             raise Http404
 
-        # TODO - add linklog here
+        link.log(self.request)
         return link.original_url

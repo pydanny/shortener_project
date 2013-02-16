@@ -22,8 +22,8 @@ class Link(TimeStampedModel):
     def count(self):
         return self.linklog_set.count()
 
-    def log(self, ip_address):
-        self.linklog_set.create(
+    def log(self, request):
+        self.linklog_set.create_from_request(
             link=self,
-            ip_address=ip_address
+            request=request
         )
