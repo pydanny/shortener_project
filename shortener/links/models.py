@@ -1,4 +1,6 @@
+from django.core.urlresolvers import reverse
 from django.db import models
+from django.utils.baseconv import base64
 from django.utils.translation import ugettext_lazy as _
 
 from model_utils.models import TimeStampedModel
@@ -27,3 +29,13 @@ class Link(TimeStampedModel):
             link=self,
             request=request
         )
+
+    def get_identifier_url(self):
+        return reverse("link_redirect", kwargs={'identifier': self.identifier})
+
+    @property
+    def tiny(self):
+        return base64.encode(self.pk)
+
+    def get_tiny_url(self):
+        return reverse("link_redirect", kwargs={'identifier': self.tiny})
