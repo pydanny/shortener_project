@@ -40,3 +40,11 @@ Created links app::
 
     $ cd shortener
     $ django-admin.py startapp links
+
+
+Command Actions
+================
+
+::
+
+    coverage run manage.py test --settings=shortener.settings.test
