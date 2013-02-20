@@ -1,12 +1,23 @@
 from django.conf.urls.defaults import patterns, url
 
-from .views import LinkRedirectView
+from links import views
 
 urlpatterns = patterns("",
 
     url(
-        regex = "^(?P<identifier>[-\w]+)/$",
-        view = LinkRedirectView.as_view(),
-        name = "link_redirect",
+        regex = "^(?P<identifier>[-_\w]+)/$",
+        view = views.LinkRedirectView.as_view(),
+        name = "links_redirect",
     ),
+    url(
+        regex = "^~list/$",
+        view = views.LinkListView.as_view(),
+        name = "links_list",
+    ),
+    url(
+        regex = "^(?P<identifier>[-_\w]+)/info/$",
+        view = views.LinkRedirectView.as_view(),
+        name = "links_detail",
+    ),
+
 )

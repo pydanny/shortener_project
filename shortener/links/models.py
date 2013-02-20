@@ -31,11 +31,11 @@ class Link(TimeStampedModel):
         )
 
     def get_identifier_url(self):
-        return reverse("link_redirect", kwargs={'identifier': self.identifier})
+        return reverse("links_redirect", kwargs={'identifier': self.identifier})
 
     @property
     def tiny(self):
         return base64.encode(self.pk)
 
     def get_tiny_url(self):
-        return reverse("link_redirect", kwargs={'identifier': self.tiny})
+        return reverse("links_redirect", kwargs={'identifier': self.tiny})

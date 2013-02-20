@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}{{ site.name }} Links{% endblock %}
+
+{% block page_title %}{% endblock page_title %}
+
+{% block nav_home %}{{ site.name }} Links{% endblock nav_home %}
+
+{% block content %}
+
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Count</th>
+            <th>Tiny</th>
+            <th>Shorter</th>
+            <th>Target</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for link in link_list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ link.count }}</td>
+                <td><a href="{{ link.get_tiny_url }}">{{ link.tiny }}</a></td>
+                <td><a href="{{ link.get_identifier_url }}">{{ link.get_identifier_url }}</a></td>
+                <td>{{ link.original_url|urlize }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+    
+{% endblock content %}

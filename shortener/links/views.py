@@ -2,9 +2,7 @@ from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 from django.utils.baseconv import base64
-from django.views.generic import RedirectView
-from django.http.request import QueryDict
-from django.utils.datastructures import MultiValueDict
+from django.views.generic import RedirectView, ListView, DetailView
 
 from .models import Link
 
@@ -33,3 +31,11 @@ class LinkRedirectView(RedirectView):
 
         link.log(self.request)
         return link.original_url
+
+class LinkListView(ListView):
+
+    model = Link
+
+class LinkDetailView(DetailView):
+
+    model = Link
