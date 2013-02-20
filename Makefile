@@ -34,5 +34,5 @@ createsite:
 	heroku addons:add pgbackups
 	git push heroku master
 	heroku ps:scale web=1
-	heroku run python manage.py syncdb --noinput  --settings=shortener.settings.production
-	heroku run python manage.py migrate --settings=shortener.settings.production
+	heroku run python shortener/manage.py syncdb --noinput  --settings=shortener.settings.production
+	heroku run python shortener/manage.py migrate --settings=shortener.settings.production
