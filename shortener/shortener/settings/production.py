@@ -64,3 +64,24 @@ DATABASES = {'default': dj_database_url.config()}
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 SECRET_KEY = get_env_setting('SECRET_KEY')
 ########## END SECRET CONFIGURATION
+
+
+########## STORAGE
+INSTALLED_APPS += ('storages',)
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+AWS_ACCESS_KEY_ID = get_env_setting('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = get_env_setting('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = "shortener"
+
+AWS_CALLING_FORMAT = CallingFormat.SUBDOMAIN
+AWS_HEADERS = {
+    'Expires': 'Thu, 15 Apr 2020 20:00:00 GMT',
+    'Cache-Control': 'max-age=86400',
+}
+AWS_QUERYSTRING_AUTH = False
+
+STATIC_URL = 'https://s3.amazonaws.com/%s/' % AWS_STORAGE_BUCKET_NAME
+MEDIA_URL = STATIC_URL
+########## END STORAGE
