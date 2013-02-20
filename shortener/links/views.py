@@ -2,6 +2,7 @@ from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 from django.utils.baseconv import base64
+from django.utils import timezone
 from django.views.generic import RedirectView, ListView, DetailView
 
 from .models import Link
@@ -69,7 +70,8 @@ class LinkDetailView(DetailView):
                     created__year=date.year,
                 ).count()
             counts.append(
-                {"date": date, "count": count}
+                {"date": date + timezone.timedelta(1),  # timezone to fix weird off-by-one
+                "count": count}
             )
 
         context['counts'] = counts
