@@ -47,7 +47,7 @@ SERVER_EMAIL = EMAIL_HOST_USER
 
 
 ########## DATABASE CONFIGURATION
-DATABASES = {}
+DATABASES = {'default': dj_database_url.config()}
 ########## END DATABASE CONFIGURATION
 
 

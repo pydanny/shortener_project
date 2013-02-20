@@ -2,6 +2,7 @@
 #	production that isn't in development.
 -r base.txt
 
+boto==2.6.0
 gunicorn==0.17.0
 django-storages==1.1.4
-django-pylibmc-sasl==0.2.4
+dj-database-url==0.1.2
