@@ -22,7 +22,7 @@
                 <td>{{ forloop.counter }}</td>
                 <td>{{ link.count }}</td>
                 <td><a href="{{ link.get_tiny_url }}">{{ link.tiny }}</a></td>
-                <td><a href="{{ link.get_identifier_url }}">{{ link.get_identifier_url }}</a></td>
+                <td><a href="{{ link.get_identifier_url }}">{{ link.identifier }}</a></td>
                 <td>{{ link.original_url|urlize }}</td>
             </tr>
         {% endfor %}
