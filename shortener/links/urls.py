@@ -16,7 +16,7 @@ urlpatterns = patterns("",
     ),
     url(
         regex = "^(?P<identifier>[-_\w]+)/info/$",
-        view = views.LinkRedirectView.as_view(),
+        view = views.LinkDetailView.as_view(),
         name = "links_detail",
     ),
 

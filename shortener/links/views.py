@@ -5,6 +5,7 @@ from django.utils.baseconv import base64
 from django.views.generic import RedirectView, ListView, DetailView
 
 from .models import Link
+from linkmetrics.models import LinkLog
 
 
 class LinkRedirectView(RedirectView):
@@ -32,10 +33,44 @@ class LinkRedirectView(RedirectView):
         link.log(self.request)
         return link.original_url
 
+
 class LinkListView(ListView):
 
     model = Link
 
+
 class LinkDetailView(DetailView):
 
     model = Link
+
+    def get_object(self):
+        identifier = self.kwargs['identifier']
+        if '-' in identifier or '_' in identifier:
+            return get_object_or_404(Link, identifier=identifier)
+
+        # decode based on the identifier
+        pk = base64.decode(identifier)
+        try:
+            link = Link.objects.get(Q(pk=pk) | Q(identifier=identifier))
+        except Link.DoesNotExist:
+            raise Http404
+
+        return link
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(LinkDetailView, self).get_context_data(**kwargs)
+        # Ghetto style just to get it working
+        counts = []
+        for date in self.object.linklog_set.dates('created', 'day'):
+
+            count = LinkLog.objects.filter(
+                    created__day=date.day,
+                    created__month=date.month,
+                    created__year=date.year,
+                ).count()
+            counts.append(
+                {"date": date, "count": count}
+            )
+
+        context['counts'] = counts
+        return context
