@@ -48,3 +48,11 @@ Command Actions
 ::
 
     coverage run manage.py test --settings=shortener.settings.test
+    
+Deployment
+===========
+
+::
+
+    $ make createsite
+    $ heroku config:add SECRET_KEY=<CHANGE_ME>
