@@ -32,6 +32,4 @@ class LinkRedirectView(RedirectView):
             raise Http404
 
         link.log(self.request)
-        print isinstance(self.request.GET, QueryDict)
-        print issubclass(QueryDict, (MultiValueDict, dict))
         return link.original_url

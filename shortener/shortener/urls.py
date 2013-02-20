@@ -9,6 +9,4 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', TemplateView.as_view(template_name='base.html')),
     url(r'^', include("links.urls")),
-
-
 )
