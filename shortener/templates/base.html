@@ -39,9 +39,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="/">{% block nav_home %}Shortener Project{% endblock nav_home %}</a>
+          <a class="brand" href="/">{% block nav_home %}{{ site.name }} Shortener{% endblock nav_home %}</a>
           <ul class="nav">
-            <li class="active"><a href="/">Home</a></li>
             <li><a href="{% url 'links_list' %}">Links</a></li>
           </ul>
         </div>
@@ -51,7 +50,6 @@
     <div class="container">
 
       <h1>{% block page_title %}Example Base Template{% endblock page_title %}</h1>
-      <hr />
 
       {% block content %}
         <p>Use this document as a way to quick start any new project.</p>
