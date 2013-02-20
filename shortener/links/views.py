@@ -68,6 +68,7 @@ class LinkDetailView(DetailView):
                     created__day=date.day,
                     created__month=date.month,
                     created__year=date.year,
+                    link=self.object
                 ).count()
             counts.append(
                 {"date": date + timezone.timedelta(1),  # timezone to fix weird off-by-one
