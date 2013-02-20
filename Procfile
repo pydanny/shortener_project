@@ -1,0 +1,1 @@
+web: python shortener/manage.py run_gunicorn --settings=shortener.settings.production -b "0.0.0.0:$PORT" -w 3
