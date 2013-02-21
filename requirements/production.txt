@@ -6,3 +6,4 @@ boto==2.6.0
 gunicorn==0.17.0
 django-storages==1.1.4
 dj-database-url==0.1.2
+newrelic
