@@ -254,3 +254,9 @@ LOGGING = {
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#wsgi-application
 WSGI_APPLICATION = 'wsgi.application'
 ########## END WSGI CONFIGURATION
+
+
+########## ADMIN CONF
+ADMIN_URL_BASE = environ.get('ADMIN_URL_BASE', r"^admin/")
+ADMIN_DOCS_URL_BASE = environ.get('ADMIN_DOCS_URL_BASE', r"^admin/docs/")
+########## END ADMIN CONF
