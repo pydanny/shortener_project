@@ -10,7 +10,7 @@ urlpatterns = patterns("",
         name = "links_redirect",
     ),
     url(
-        regex = "^~list/$",
+        regex = "^~links/$",
         view = views.LinkListView.as_view(),
         name = "links_list",
     ),
