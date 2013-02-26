@@ -135,3 +135,7 @@ LOGGING = {
     }
 }
 ########### END LOGGING
+
+########### HOSTS
+ALLOWED_HOSTS = ['2scoops.co', 'twoscoops-co.herokuapp.com', ]
+########### END HOSTS
