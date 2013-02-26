@@ -109,7 +109,7 @@ STATICFILES_FINDERS = (
 ########## SECRET CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 # Note: This key only used for development and testing.
-SECRET_KEY = r"frlu3mj_6_5v%3qf#_x7izz@r84@x945vm6_z%@zg+vqriq^gs"
+SECRET_KEY = r"<change-me-in-production>"
 ########## END SECRET CONFIGURATION
 
 
