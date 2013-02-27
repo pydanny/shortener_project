@@ -137,5 +137,5 @@ LOGGING = {
 ########### END LOGGING
 
 ########### HOSTS
-ALLOWED_HOSTS = ['2scoops.co', 'twoscoops-co.herokuapp.com', ]
+ALLOWED_HOSTS = ['2scoops.co', 'twoscoops-co.herokuapp.com', 'www.2scoops.co', ]
 ########### END HOSTS
