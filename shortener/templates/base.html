@@ -40,9 +40,11 @@
             <span class="icon-bar"></span>
           </a>
           <a class="brand" href="/">{% block nav_home %}{{ site.name }} Shortener{% endblock nav_home %}</a>
+          {% if request.user.is_authenticated %}
           <ul class="nav">
             <li><a href="{% url 'links_list' %}">Links</a></li>
           </ul>
+          {% endif %}
         </div>
       </div>
     </div>
