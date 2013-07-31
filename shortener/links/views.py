@@ -43,7 +43,12 @@ class LinkRedirectView(RedirectView):
 class LinkListView(ListView):
 
     model = Link
-    queryset = Link.objects.annotate(Count('linklog')).order_by("-linklog__count")
+    
+    def get_queryset(self):
+        order = self.request.GET.get("order", "-linklog__count")
+        if order not in ("-created", "-linklog__count"):
+            order = "-linklog__count"
+        return Link.objects.annotate(Count('linklog')).order_by(order)
 
 
 class LinkDetailView(DetailView):

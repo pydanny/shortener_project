@@ -9,8 +9,9 @@
 <table class="table table-condensed">
     <thead>
         <tr>
-            <th>#</th>
-            <th>Count</th>
+            <th></th>
+            <th><a href="?order={{ view.new_order_direction }}created">Age</a></th>
+            <th><a href="?order={{ view.new_order_direction }}linklog__count">Count</a></th>
             <th>Tiny</th>
             <th>Shorter</th>
             <th>Target</th>
@@ -19,7 +20,8 @@
     <tbody>
         {% for link in link_list %}
             <tr>
-                <td>{{ forloop.counter }} <a href="{% url 'links:detail' link.tiny %}">info</a></td>
+                <td><a href="{% url 'links:detail' link.tiny %}">info</a></td>
+                <td>{{ link.created|timesince }}</td>
                 <td>{{ link.linklog__count }}</td>
                 <td><a href="{{ link.get_tiny_url }}">{{ link.tiny }}</a></td>
                 <td><a href="{{ link.get_identifier_url }}">{{ link.identifier }}</a></td>
