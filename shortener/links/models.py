@@ -3,6 +3,7 @@ from django.db import models
 from django.utils.baseconv import base64
 from django.utils.translation import ugettext_lazy as _
 
+from amazonify import amazonify
 from model_utils.models import TimeStampedModel
 
 from .validators import validate_five_characters
@@ -31,11 +32,17 @@ class Link(TimeStampedModel):
         )
 
     def get_identifier_url(self):
-        return reverse("links_redirect", kwargs={'identifier': self.identifier})
+        return reverse("links:redirect", kwargs={'identifier': self.identifier})
 
     @property
     def tiny(self):
         return base64.encode(self.pk)
 
     def get_tiny_url(self):
-        return reverse("links_redirect", kwargs={'identifier': self.tiny})
+        return reverse("links:redirect", kwargs={'identifier': self.tiny})
+
+    def amazonify(self):
+        url = self.original_url
+        if url.startswith(("https://amazon.", "http://amazon.", "http://amzn.", "https://amzn.")):
+            url = amazonify(url, "mlinar-20")
+        return url

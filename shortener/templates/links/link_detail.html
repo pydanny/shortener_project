@@ -8,7 +8,9 @@
 
 <p><strong>Target URL</strong>: {{ link.original_url|urlize }}</p>
 <p><strong>Tiny</strong>: <a href="{{ link.get_tiny_url }}">{{ link.tiny }}</a></p>
-<p><strong>Shorter</strong>: <a href="{{ link.get_identifier_url }}">{{ link.identifier }}</a></p>
+{% if link.identifier %}
+    <p><strong>Shorter</strong>: <a href="{{ link.get_identifier_url }}">{{ link.identifier }}</a></p>
+{% endif %}
 <p><strong>Total Count</strong>: {{ link.count }}</p>
 
 {{ dates }}

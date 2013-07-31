@@ -89,6 +89,8 @@ class LinkCreateView(FormView):
     template_name = "links/link_form.html"
 
     def form_valid(self, form):
-        link = form.save()
+        # Handle adding of referral links
+        link = form.save(commit=False)
+        link.original_url = link.amazonify()
         link.save()
         return redirect(reverse("links:detail", kwargs={"identifier": link.tiny}))

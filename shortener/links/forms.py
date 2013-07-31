@@ -18,5 +18,5 @@ class BasicLinkForm(forms.ModelForm):
         except requests.exceptions.MissingSchema:
             raise forms.ValidationError("Please enter a real URL.")
         if r.status_code not in (200, 301, 302):
-            raise forms.ValidationError("Please enter an accessible URL")
+            raise forms.ValidationError("Please enter a working or accessible URL")
         return url
