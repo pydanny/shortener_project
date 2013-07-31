@@ -43,6 +43,13 @@ class Link(TimeStampedModel):
 
     def amazonify(self):
         url = self.original_url
-        if url.startswith(("https://amazon.", "http://amazon.", "http://amzn.", "https://amzn.")):
+        if url.startswith(
+            ("https://amazon.",
+                "http://amazon.",
+                "http://amzn.",
+                "https://amzn.",
+                "https://www.amazon.",
+                "http://www.amazon.")
+            ):
             url = amazonify(url, "mlinar-20")
         return url
