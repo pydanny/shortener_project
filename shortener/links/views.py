@@ -1,4 +1,5 @@
 from django.core.urlresolvers import reverse
+from django.db.models import Count
 from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect
@@ -42,6 +43,7 @@ class LinkRedirectView(RedirectView):
 class LinkListView(ListView):
 
     model = Link
+    queryset = Link.objects.annotate(Count('linklog')).order_by("-linklog__count")
 
 
 class LinkDetailView(DetailView):

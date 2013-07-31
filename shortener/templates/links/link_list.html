@@ -20,7 +20,7 @@
         {% for link in link_list %}
             <tr>
                 <td>{{ forloop.counter }} <a href="{% url 'links:detail' link.tiny %}">info</a></td>
-                <td>{{ link.count }}</td>
+                <td>{{ link.linklog__count }}</td>
                 <td><a href="{{ link.get_tiny_url }}">{{ link.tiny }}</a></td>
                 <td><a href="{{ link.get_identifier_url }}">{{ link.identifier }}</a></td>
                 <td>{{ link.original_url|urlize }}</td>
