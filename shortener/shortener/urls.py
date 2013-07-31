@@ -9,5 +9,5 @@ urlpatterns = patterns('',
     url(settings.ADMIN_DOCS_URL_BASE, include('django.contrib.admindocs.urls')),
     url(settings.ADMIN_URL_BASE, include(admin.site.urls)),
     url(r'^$', TemplateView.as_view(template_name="home.html")),
-    url(r'^', include("links.urls")),
+    url(r'^', include("links.urls", namespace="links")),
 )

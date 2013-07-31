@@ -1,5 +1,5 @@
 # Local development dependencies go here
--r base.txt
+-r ../production.txt
 Sphinx==1.1.3
 coverage==3.6
 django-discover-runner==0.2.2

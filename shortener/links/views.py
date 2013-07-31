@@ -3,7 +3,9 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404
 from django.utils.baseconv import base64
 from django.utils import timezone
-from django.views.generic import RedirectView, ListView, DetailView
+from django.views.generic import (
+    RedirectView, ListView, DetailView, CreateView
+)
 
 from .models import Link
 from linkmetrics.models import LinkLog
@@ -77,3 +79,8 @@ class LinkDetailView(DetailView):
 
         context['counts'] = counts
         return context
+
+
+class LinkCreateView(CreateView):
+
+    model = Link

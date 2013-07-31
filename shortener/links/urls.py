@@ -7,17 +7,22 @@ urlpatterns = patterns("",
     url(
         regex = "^(?P<identifier>[-_\.\w]+)/$",
         view = views.LinkRedirectView.as_view(),
-        name = "links_redirect",
+        name = "redirect",
     ),
     url(
         regex = "^~links/$",
         view = views.LinkListView.as_view(),
-        name = "links_list",
+        name = "list",
+    ),
+    url(
+        regex = "^~create/$",
+        view = views.LinkCreateView.as_view(),
+        name = "create",
     ),
     url(
         regex = "^(?P<identifier>[-_\.\w]+)/info/$",
         view = views.LinkDetailView.as_view(),
-        name = "links_detail",
+        name = "detail",
     ),
 
 )
