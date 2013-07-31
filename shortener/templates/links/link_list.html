@@ -20,8 +20,8 @@
     <tbody>
         {% for link in link_list %}
             <tr>
-                <td>{{ link.pk }}<a href="{% url 'links:detail' link.tiny %}">info</a></td>
-                <td>{{ link.created|timesince }}</td>
+                <td><a href="{% url 'links:detail' link.tiny %}">info</a></td>
+                <td nowrap>{{ link.created|timesince }}</td>
                 <td>{{ link.linklog__count }}</td>
                 <td><a href="{{ link.get_tiny_url }}">{{ link.tiny }}</a></td>
                 <td><a href="{{ link.get_identifier_url }}">{{ link.identifier }}</a></td>
