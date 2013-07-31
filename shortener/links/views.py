@@ -1,12 +1,14 @@
+from django.core.urlresolvers import reverse
 from django.db.models import Q
 from django.http import Http404
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from django.utils.baseconv import base64
 from django.utils import timezone
 from django.views.generic import (
-    RedirectView, ListView, DetailView, CreateView
+    RedirectView, ListView, DetailView, FormView
 )
 
+from .forms import BasicLinkForm
 from .models import Link
 from linkmetrics.models import LinkLog
 
@@ -81,6 +83,12 @@ class LinkDetailView(DetailView):
         return context
 
 
-class LinkCreateView(CreateView):
+class LinkCreateView(FormView):
 
-    model = Link
+    form_class = BasicLinkForm
+    template_name = "links/link_form.html"
+
+    def form_valid(self, form):
+        link = form.save()
+        link.save()
+        return redirect(reverse("links:detail", kwargs={"identifier": link.tiny}))

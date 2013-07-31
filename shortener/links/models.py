@@ -10,7 +10,7 @@ from .validators import validate_five_characters
 
 class Link(TimeStampedModel):
 
-    original_url = models.CharField(_("URL to be shortened"), max_length=255)
+    original_url = models.CharField(_("URL to be shortened"), max_length=255, unique=True)
     identifier = models.CharField(_("Identifier"),
                                     max_length=100,
                                     blank=True,

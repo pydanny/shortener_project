@@ -13,6 +13,7 @@
 
 {{ dates }}
 
+{% if counts %}
 <table class="table table-condensed">
     <thead>
         <tr>
@@ -29,5 +30,6 @@
         {% endfor %}
     </tbody>
 </table>
+{% endif %}
     
 {% endblock content %}

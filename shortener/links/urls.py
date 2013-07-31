@@ -15,7 +15,7 @@ urlpatterns = patterns("",
         name = "list",
     ),
     url(
-        regex = "^~create/$",
+        regex = "^~shorten/$",
         view = views.LinkCreateView.as_view(),
         name = "create",
     ),

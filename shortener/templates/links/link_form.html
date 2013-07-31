@@ -1,11 +1,28 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block title %}{{ site.name }}{% endblock %}
 
-{% block page_title %}Create Link{% endblock page_title %}
+{% block page_title %}Shorten Link{% endblock page_title %}
 
 {% block content %}
 
+<div class="row-fluid">
+    <div class="12">
+        <form method="post" class="uniForm">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button class="btn btn-inverse" type="submit">Add Link</button>
+        </form>
+    </div>
+
+</div>
 
     
 {% endblock content %}
+
+{% block javascript %}{{ block.super }}
+<script type="text/javascript">
+    $("#id_original_url").focus();
+</script>
+{% endblock %}
