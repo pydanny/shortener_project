@@ -13,6 +13,8 @@ class BasicLinkForm(forms.ModelForm):
 
     def clean_original_url(self):
         url = self.cleaned_data['original_url']
+        if "//" in url[8:]:
+            raise forms.ValidationError("Don't be silly.")
         try:
             r = requests.get(url)
         except requests.exceptions.MissingSchema:
