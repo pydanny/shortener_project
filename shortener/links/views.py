@@ -25,9 +25,13 @@ class LinkRedirectView(RedirectView):
         # If identifier includes a link it means we don't need to do a base64
         # decode. Just a fetch based on the identifier
         if '-' in identifier or '_' in identifier or '.' in identifier:
-            link = get_object_or_404(Link, identifier=identifier)
-            link.log(self.request)
-            return link.original_url
+            try:
+                link = Link.objects.get(identifier=identifier)
+                link.log(self.request)
+                return link.original_url
+            except Link.DoesNotExist:
+                # identifier has '-' or '_' but doesn't evaliate
+                pass
 
         # decode based on the identifier
         pk = base64.decode(identifier)

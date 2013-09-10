@@ -9,7 +9,7 @@ from .models import Link
 class LinkAdmin(admin.ModelAdmin):
 
     verbose_name_plural = "links"
-    list_display = ['identifier', 'original_url',  'count', 'created', 'modified', ]
+    list_display = ['original_url',  'identifier',  'count', 'created', 'modified', ]
 
     readonly_fields = ('test_url', 'created', 'modified', 'count')
 
