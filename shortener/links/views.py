@@ -43,7 +43,7 @@ class LinkRedirectView(RedirectView):
 class LinkListView(ListView):
 
     model = Link
-    
+
     def get_queryset(self):
         order = self.request.GET.get("order", "-linklog__count")
         if order not in ("-created", "-linklog__count"):
