@@ -14,7 +14,7 @@ class LinkLog(TimeStampedModel):
 
     link = models.ForeignKey(Link)
 
-    http_accept_language = models.CharField(_("HTTP_ACCEPT_LANGUAGE"), max_length=255, blank=True)
+    http_accept_language = models.TextField(_("HTTP_ACCEPT_LANGUAGE"), blank=True)
     http_host = models.CharField(_("HTTP_HOST"), max_length=255, blank=True)
     http_referer = models.CharField(_("HTTP_REFERER"), max_length=255, blank=True)
     http_user_agent = models.CharField(_("HTTP_USER_AGENT"), max_length=255, blank=True)
