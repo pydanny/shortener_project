@@ -10,8 +10,8 @@ class LinkAdmin(admin.ModelAdmin):
 
     verbose_name_plural = "links"
     list_display = ['original_url',  'identifier',  'count', 'created', 'modified', ]
-
     readonly_fields = ('test_url', 'created', 'modified', 'count')
+    search_fields = ['original_url', 'identifier']
 
     def test_url(self, instance):
         site = Site.objects.get_current()
