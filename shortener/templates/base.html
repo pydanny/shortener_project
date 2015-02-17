@@ -42,7 +42,7 @@
           <a class="brand" href="/">{% block nav_home %}{{ site.name }} Shortener{% endblock nav_home %}</a>
           <ul class="nav">
             <li><a href="{% url 'links:list' %}">Links</a></li>
-            <!-- <li><a href="{% url 'links:create' %}">Shorten</a></li> -->
+            {% comment %} <li><a href="{% url 'links:create' %}">Shorten</a></li> {% endcomment %}
           </ul>
           {% comment %}
           <ul  class="nav pull-right">
