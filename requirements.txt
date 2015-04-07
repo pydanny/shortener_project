@@ -1,7 +1,7 @@
 # All the deployment requirements here because Heroku
 #   doesn't like nested requirements
 
-django==1.5.1
+django==1.5.12
 bpython==0.12
 django-braces==0.2.1
 django-model-utils==1.1.0
