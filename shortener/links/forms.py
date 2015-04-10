@@ -9,7 +9,7 @@ class BasicLinkForm(forms.ModelForm):
 
     class Meta:
         model = Link
-        fields = ("original_url", )
+        fields = ("original_url", "identifier")
 
     def clean_original_url(self):
         url = self.cleaned_data['original_url']
