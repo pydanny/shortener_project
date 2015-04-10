@@ -42,7 +42,7 @@
           <a class="brand" href="/">{% block nav_home %}{{ site.name }} Shortener{% endblock nav_home %}</a>
           <ul class="nav">
             <li><a href="{% url 'links:list' %}">Links</a></li>
-            {% if request.user.is_admin %}
+            {% if request.user.is_staff %}
                 <li><a href="{% url 'links:create' %}">Shorten</a></li>
             {% endif %}
           </ul>
