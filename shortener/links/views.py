@@ -9,6 +9,8 @@ from django.views.generic import (
     RedirectView, ListView, DetailView, FormView
 )
 
+from braces.views import LoginRequiredMixin, StaffuserRequiredMixin
+
 from .forms import BasicLinkForm
 from .models import Link
 from linkmetrics.models import LinkLog
@@ -94,7 +96,7 @@ class LinkDetailView(DetailView):
         return context
 
 
-class LinkCreateView(FormView):
+class LinkCreateView(LoginRequiredMixin, StaffuserRequiredMixin, FormView):
 
     form_class = BasicLinkForm
     template_name = "links/link_form.html"

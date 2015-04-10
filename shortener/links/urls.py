@@ -14,11 +14,11 @@ urlpatterns = patterns("",
         view = views.LinkListView.as_view(),
         name = "list",
     ),
-    # url(
-    #     regex = "^~shorten/$",
-    #     view = views.LinkCreateView.as_view(),
-    #     name = "create",
-    # ),
+    url(
+        regex = "^~shorten/$",
+        view = views.LinkCreateView.as_view(),
+        name = "create",
+    ),
     url(
         regex = "^(?P<identifier>[\-\_\.\w]+)/info/$",
         view = views.LinkDetailView.as_view(),
