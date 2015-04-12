@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath="$PWD/shortener/shortener" wsgi:application
+web: gunicorn --pythonpath="$PWD/shortener" wsgi:application
