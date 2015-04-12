@@ -79,7 +79,7 @@ class LinkDetailView(DetailView):
         context = super(LinkDetailView, self).get_context_data(**kwargs)
         # Ghetto style just to get it working
         counts = []
-        for date in self.object.linklog_set.dates('created', 'day'):
+        for date in self.object.linklog_set.datetimes('created', 'day'):
 
             count = LinkLog.objects.filter(
                     created__day=date.day,

@@ -1,4 +1,4 @@
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, NoReverseMatch
 from django.db import models
 from django.utils.baseconv import base64
 from django.utils.translation import ugettext_lazy as _
@@ -32,7 +32,10 @@ class Link(TimeStampedModel):
         )
 
     def get_identifier_url(self):
-        return reverse("links:redirect", kwargs={'identifier': self.identifier})
+        try:
+            return reverse("links:redirect", kwargs={'identifier': self.identifier})
+        except NoReverseMatch:
+            return 'NADA'
 
     @property
     def tiny(self):
