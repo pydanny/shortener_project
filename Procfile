@@ -1,1 +1,1 @@
-web: gunicorn shortener_project.shortener.wsgi:application  "0.0.0.0:$PORT" -w 3
+web: gunicorn --pythonpath="$PWD/shortener/shortener" wsgi:application
