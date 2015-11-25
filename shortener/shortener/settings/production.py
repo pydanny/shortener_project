@@ -90,7 +90,7 @@ SECRET_KEY = get_env_setting('SECRET_KEY')
 # AWS_QUERYSTRING_AUTH = False
 
 # STATIC_URL = 'https://s3.amazonaws.com/%s/' % AWS_STORAGE_BUCKET_NAME
-# MEDIA_URL = STATIC_URL
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 ########## END STORAGE
 
 ########### LOGGING
