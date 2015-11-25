@@ -3,7 +3,7 @@
 
 from os import environ
 import dj_database_url
-from S3 import CallingFormat
+# from S3 import CallingFormat
 
 from base import *
 
