@@ -1,6 +1,6 @@
 # Some helpful utility commands
 
-all: 
+all:
 	heroku pgbackups:capture --expire
 	git push heroku master
 	heroku run python shortener/manage.py syncdb --noinput  --settings=shortener.settings.production
@@ -27,9 +27,14 @@ restoredata:
 shell:
 	heroku run python shortener/manage.py shell_plus --settings=shortener.settings.production
 
+new:
+	heroku addons:create sendgrid:starter --app=twoscoops-co2
+	heroku addons:create heroku-postgresql:standard-0 --app=twoscoops-co2
+	heroku addons:add pgbackups --app=twoscoops-co2
+
 createsite:
-	heroku create --stack cedar
-	heroku addons:add sendgrid:starter
+	# heroku create --stack cedar
+	# heroku addons:add sendgrid:starter
 	heroku addons:add heroku-postgresql:dev
 	heroku addons:add pgbackups
 	git push heroku master

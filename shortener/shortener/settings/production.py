@@ -20,7 +20,7 @@ def get_env_setting(setting):
     except KeyError:
         error_msg = "Set the %s env variable" % setting
         raise ImproperlyConfigured(error_msg)
-        
+
 INSTALLED_APPS += ('gunicorn',)
 
 ########## EMAIL CONFIGURATION
@@ -74,23 +74,23 @@ SECRET_KEY = get_env_setting('SECRET_KEY')
 
 
 ########## STORAGE
-INSTALLED_APPS += ('storages',)
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+# INSTALLED_APPS += ('storages',)
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+# STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
-AWS_ACCESS_KEY_ID = get_env_setting('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = get_env_setting('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = "shortener"
+# AWS_ACCESS_KEY_ID = get_env_setting('AWS_ACCESS_KEY_ID')
+# AWS_SECRET_ACCESS_KEY = get_env_setting('AWS_SECRET_ACCESS_KEY')
+# AWS_STORAGE_BUCKET_NAME = "shortener"
+#
+# AWS_CALLING_FORMAT = CallingFormat.SUBDOMAIN
+# AWS_HEADERS = {
+#     'Expires': 'Thu, 15 Apr 2020 20:00:00 GMT',
+#     'Cache-Control': 'max-age=86400',
+# }
+# AWS_QUERYSTRING_AUTH = False
 
-AWS_CALLING_FORMAT = CallingFormat.SUBDOMAIN
-AWS_HEADERS = {
-    'Expires': 'Thu, 15 Apr 2020 20:00:00 GMT',
-    'Cache-Control': 'max-age=86400',
-}
-AWS_QUERYSTRING_AUTH = False
-
-STATIC_URL = 'https://s3.amazonaws.com/%s/' % AWS_STORAGE_BUCKET_NAME
-MEDIA_URL = STATIC_URL
+# STATIC_URL = 'https://s3.amazonaws.com/%s/' % AWS_STORAGE_BUCKET_NAME
+# MEDIA_URL = STATIC_URL
 ########## END STORAGE
 
 ########### LOGGING
@@ -137,5 +137,5 @@ LOGGING = {
 ########### END LOGGING
 
 ########### HOSTS
-ALLOWED_HOSTS = ['2scoops.co', 'twoscoops-co.herokuapp.com', 'www.2scoops.co', ]
+ALLOWED_HOSTS = ['2scoops.co', 'twoscoops-co.herokuapp.com', 'www.2scoops.co', 'twoscoops-co2.herokuapp.com', ]
 ########### END HOSTS
