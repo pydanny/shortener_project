@@ -187,8 +187,7 @@ DJANGO_APPS = (
 
 THIRD_PARTY_APPS = (
     # Database migration helpers:
-    'south',
-    'crispy_forms'
+    'crispy_forms',
 )
 
 # Apps specific for this project go here.
@@ -261,3 +260,6 @@ WSGI_APPLICATION = 'wsgi.application'
 ADMIN_URL_BASE = environ.get('ADMIN_URL_BASE', r"^admin/")
 ADMIN_DOCS_URL_BASE = environ.get('ADMIN_DOCS_URL_BASE', r"^admin/docs/")
 ########## END ADMIN CONF
+
+
+TEST_RUNNER = 'django.test.simple.DjangoTestSuiteRunner'
